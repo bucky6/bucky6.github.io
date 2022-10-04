@@ -21,34 +21,45 @@ function draw() {
   }
 }
 
-function mousePressed() {
-  if (state === "start" && mouseInsideRect(400, 700, 400, 550)) {
+//start screen
+function startScreen() {
+  if (keyIsPressed) {
     state = "main";
   }
 }
 
-function startScreen() {
-  if (mouseInsideRect(400, 700, 400, 550)) {
-    fill("gray");
-  }
-  else {
-    fill("black");
-  }
-  rect(400, 400, 300, 150);
-}
-
-function mouseInsideRect(left, right, top, bottom) {
-  return mouseX >= left && mouseX <= right &&
-    mouseY >= top && mouseY <= bottom;
-}
-
+//draw the piano
 function drawPiano() {
-  let x = 50;
-  // draw white keys
-  for (let i = 0; i < 16; i++) {
-    fill("white");
-    rect(x, 200, 50, 150);
-    x += 50;
+  //draw the white keys
+  function drawWhiteKeys() {
+    let whiteX = 50;
+    for (let i = 0; i < 8; i++) {
+      fill("white");
+      rect(whiteX, 200, 50, 150);
+      whiteX += 50;
+    }
   }
-  
+  drawWhiteKeys();
+  // draw the black keys
+  function drawBlackKeys() {
+    function cSharpDSharp() {
+      let blackX1 = 60;
+      for (let i = 0; i < 2; i++) {
+        fill("black");
+        rect(blackX1 += 25, 200, 35, 100);
+        blackX1 += 25;
+      }
+    }
+    cSharpDSharp();
+    function fSharpGSharpASharp() {
+      let blackX2 = 210;
+      for (let i = 0; i< 3; i++) {
+        fill("black");
+        rect(blackX2 += 25, 200, 35, 100);
+        blackX2 += 25;
+      }
+    }
+    fSharpGSharpASharp();
+  }
+  drawBlackKeys();
 }
