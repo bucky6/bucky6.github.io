@@ -3,7 +3,8 @@
 // October 11, 2022
 //
 // Extra for Experts:
-// - describe what you did to take this project "above and beyond"
+// - I used sound and made sure the piano would be centered no matter
+//   the size of the window.
 
 let state = "start";
 let whiteRectX = 50;
