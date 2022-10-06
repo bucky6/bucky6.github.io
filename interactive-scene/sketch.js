@@ -36,7 +36,6 @@ function startScreen() {
 }
 
 let whiteKeys = [0, 1, 2, 3, 4, 5, 6, 7];
-let blackKeys = [1, 2, 4, 5, 6];
 
 //draw the piano
 function drawPiano() {
