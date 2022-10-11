@@ -10,7 +10,7 @@ let state = "start";
 let whiteRectX = 50;
 let blackRectX = 35;
 
-let A, B, C, D, E, F, G, CSharp, DSharp, FSharp, GSharp, ASharp;
+let A, B, C, D, E, F, G, C2, CSharp, DSharp, FSharp, GSharp, ASharp;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -25,6 +25,10 @@ function draw() {
   }
   if (state === "main") {
     drawPiano();
+  }
+  if (mouseInsideC()) {
+    fill("gray");
+    rect(width/2 - whiteRectX*4, height/2 - 100, whiteRectX, 150);
   }
 }
 
@@ -73,9 +77,11 @@ function drawPiano() {
   drawBlackKeys();
 }
 
+
+
 // add sound files
 function preload() {
-  soundFormats("mp3");
+  soundFormats("mp3", "wav");
   C = loadSound("C.mp3");
   D = loadSound("D.mp3");
   E = loadSound("E.mp3");
@@ -83,4 +89,10 @@ function preload() {
   G = loadSound("G.mp3");
   A = loadSound("A.mp3");
   B = loadSound("B.mp3");
+  C2 = loadSound("C2.wav");
+}
+
+function mouseInsideC() {
+  return mouseX >= width/2 - 200 && mouseX <= width/2 - 100 + 50 &&
+    mouseY >= height/2 - 100 && mouseY <= height/2 - 250;
 }
