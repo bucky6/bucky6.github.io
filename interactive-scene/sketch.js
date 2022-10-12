@@ -7,8 +7,6 @@
 //   the size of the window.
 
 let state = "start";
-let whiteRectX = 50;
-let blackRectX = 35;
 
 let A, B, C, D, E, F, G, C2, CSharp, DSharp, FSharp, GSharp, ASharp;
 
@@ -26,10 +24,6 @@ function draw() {
   if (state === "main") {
     drawPiano();
   }
-  if (mouseInsideC()) {
-    fill("gray");
-    rect(width/2 - whiteRectX*4, height/2 - 100, whiteRectX, 150);
-  }
 }
 
 //start screen
@@ -39,45 +33,24 @@ function startScreen() {
   }
 }
 
-let whiteKeys = [0, 1, 2, 3, 4, 5, 6, 7];
+// white = 0, black = 1
+let keys = [0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 0];
 
-//draw the piano
-function drawPiano() {
-  //draw the white keys
-  function drawWhiteKeys() {
-    let whiteX = width/2 - whiteRectX*4;
-    for (let i = 0; i < whiteKeys.length; i++) {
+// draw the piano
+function drawPiano(){
+  let x = width/2 - 200;
+  for (let i = 0; i < keys.length; i++) {
+    if (keys[i] === 0) {
       fill("white");
-      rect(whiteX, height/2 - 100, whiteRectX, 150);
-      whiteX += 50;
+      rect(x + 17, height/2 - 100, 50, 150);
+      x += 50;
+    }
+    else {
+      fill("black");
+      rect(x - 17, height/2- 100, 34, 100);
     }
   }
-  drawWhiteKeys();
-  // draw the black keys
-  function drawBlackKeys() {
-    function cSharpDSharp() {
-      let blackX1 = width/2 - whiteRectX*4 + 7;
-      for (let i = 0; i < 2; i++) {
-        fill("black");
-        rect(blackX1 += 25, height/2 - 100, blackRectX, 100);
-        blackX1 += 25;
-      }
-    }
-    cSharpDSharp();
-    function fSharpGSharpASharp() {
-      let blackX2 = width/2 - whiteRectX +7;
-      for (let i = 0; i< 3; i++) {
-        fill("black");
-        rect(blackX2 += 25, height/2- 100, blackRectX, 100);
-        blackX2 += 25;
-      }
-    }
-    fSharpGSharpASharp();
-  }
-  drawBlackKeys();
 }
-
-
 
 // add sound files
 function preload() {
@@ -92,7 +65,5 @@ function preload() {
   C2 = loadSound("C2.wav");
 }
 
-function mouseInsideC() {
-  return mouseX >= width/2 - 200 && mouseX <= width/2 - 100 + 50 &&
-    mouseY >= height/2 - 100 && mouseY <= height/2 - 250;
-}
+// createbutton(notes[i])
+
