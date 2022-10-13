@@ -34,7 +34,7 @@ function startScreen() {
 }
 
 // white = 0, black = 1
-let keys = [0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 0];
+let keys = [0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0];
 
 // draw the piano
 function drawPiano(){
@@ -42,13 +42,20 @@ function drawPiano(){
   for (let i = 0; i < keys.length; i++) {
     if (keys[i] === 0) {
       fill("white");
-      rect(x + 17, height/2 - 100, 50, 150);
+      rect(x, height/2 - 100, 50, 150);
       x += 50;
     }
-    else {
+  }
+  x = width/2 - 150;
+  for (let j = 0; j < keys.length; j++) {
+    if (keys[j] === 1) {
       fill("black");
-      rect(x - 17, height/2- 100, 34, 100);
+      rect(x - 17, height/2 - 100, 34, 100);
+      x += 50;
     }
+    // else {
+    //   x += 50;
+    // }
   }
 }
 
