@@ -9,6 +9,7 @@
 let state = "start";
 
 let A, B, C, D, E, F, G, C2, CSharp, DSharp, FSharp, GSharp, ASharp;
+let drums;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -21,16 +22,25 @@ function draw() {
     textSize(40);
     text("Press Any Key To Start", width/2 - 250, height/2);
   }
-  if (state === "main") {
+  if (state === "piano") {
     drawPiano();
+  }
+  if (state === "drums") {
+      image(drums, width/2 - 500, height/2 - 500);
   }
 }
 
 //start screen
 function startScreen() {
   if (keyIsPressed) {
-    state = "main";
+    state = "piano";
   }
+}
+
+if (state === "piano") {
+  drums = createButton("Drums");
+  drums.position(25, 25);
+  drums.mousePressed(state === "drums");
 }
 
 // white = 0, black = 1
@@ -59,6 +69,11 @@ function drawPiano(){
   }
 }
 
+//iterate through the keys array
+// if 1, draw a black rectangle 
+// x += 50
+// else ???
+
 // add sound files
 function preload() {
   soundFormats("mp3", "wav");
@@ -72,5 +87,31 @@ function preload() {
   C2 = loadSound("C2.wav");
 }
 
-// createbutton(notes[i])
+function preload() {
+  drums = loadImage("drums.jpeg");
+}
+
+function keyPressed() {
+  if (keyCode === 65) {
+    A.play();
+  }
+  else if (keyCode === 66) {
+    B.play();
+  }
+  else if (keyCode === 67) {
+    C.play();
+  }
+  else if (keyCode === 68) {
+    D.play();
+  }
+  else if (keyCode === 69) {
+    E.play()
+  }
+  else if (keyCode === 70) {
+    F.play();
+  }
+  else if (keyCode === 71) {
+    G.play();
+  }
+}
 
