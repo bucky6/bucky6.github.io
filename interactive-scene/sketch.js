@@ -29,21 +29,20 @@ function draw() {
       image(drumsImage, width/2 - 500, height/2 - 500)
   }
 //start screen
-function startScreen() {
-  if (keyIsPressed) {
-    state = "piano";
+  function startScreen() {
+    if (keyIsPressed) {
+      state = "piano";
+    }
   }
-}
 }
 
 //make the piano screen and add in notes
 function pianoScreen() {
   if (state === "piano") {
     drawPiano();
-    drums = createButton("Drums");
-    drums.position(25, 25);
-    drums.size(100, 50);
-    drums.mousePressed(state === "drums");
+    cButton = createButton("C")
+    cButton.position(width/2 - 175, height/2);
+    cButton.mousePressed(C.play());
   }
 }
 
@@ -51,7 +50,7 @@ function pianoScreen() {
 let keys = [0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0];
 
 // draw the piano
-function drawPiano(){
+function drawPiano() {
   let x = width/2 - 200;
   for (let i = 0; i < keys.length; i++) {
     if (keys[i] === 0) {
@@ -63,6 +62,7 @@ function drawPiano(){
   x = width/2 - 150;
   for (let j = 0; j < keys.length; j++) {
     if (keys[j] === 1) {
+      if(keys[j-2]===0) {x+=50}
       fill("black");
       rect(x - 17, height/2 - 100, 34, 100);
       x += 50;
@@ -70,8 +70,6 @@ function drawPiano(){
   }
 }
 
-
-// add sound files
 function preload() {
   soundFormats("mp3");
   C = loadSound("C.mp3");
@@ -87,30 +85,6 @@ function preload() {
   FSharp = loadSound("F#.mp3");
   GSharp = loadSound("G#.mp3");
   ASharp = loadSound("A#.mp3");
-}
-
-function keyPressed() {
-  if (keyCode === 65) {
-    A.play();
-  }
-  else if (keyCode === 66) {
-    B.play();
-  }
-  else if (keyCode === 67) {
-    C.play();
-  }
-  else if (keyCode === 68) {
-    D.play();
-  }
-  else if (keyCode === 69) {
-    E.play()
-  }
-  else if (keyCode === 70) {
-    F.play();
-  }
-  else if (keyCode === 71) {
-    G.play();
-  }
 }
 
 function preload() {
