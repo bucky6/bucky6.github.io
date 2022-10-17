@@ -40,9 +40,7 @@ function draw() {
 function pianoScreen() {
   if (state === "piano") {
     drawPiano();
-    cButton = createButton("C")
-    cButton.position(width/2 - 175, height/2);
-    cButton.mousePressed(C.play());
+
   }
 }
 
