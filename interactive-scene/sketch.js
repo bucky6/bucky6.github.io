@@ -9,7 +9,6 @@
 // define all the variables
 let state = "start";
 let A, B, C, D, E, F, G, C2, D2, E2, F2, G2, A2, B2, cSharp, dSharp, fSharp, gSharp, aSharp, c2Sharp, d2Sharp, f2Sharp, g2Sharp, a2Sharp;
-let drumsImage 
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -70,7 +69,7 @@ function drawPiano(x) {
   }
 }
 
-// add in notes
+// load in notes
 function preload() {
   soundFormats("mp3");
   C = loadSound("C.mp3");
@@ -86,6 +85,14 @@ function preload() {
   aSharp = loadSound("ASharp.mp3");
   B = loadSound("B.mp3");
   C2 = loadSound("C2.mp3");
+  c2Sharp = loadSound("C2Sharp.mp3");
+  D2 = loadSound("D2.mp3");
+  d2Sharp = loadSound("D2Sharp.mp3");
+  E2 = loadSound("E2.mp3");
+  F2 = loadSound("F2.mp3");
+  f2Sharp = loadSound("F2Sharp.mp3");
+  G2 = loadSound("G2.mp3");
+  g2Sharp = loadSound("G2Sharp.mp3");
 }
 
 
