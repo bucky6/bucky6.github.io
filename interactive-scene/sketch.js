@@ -42,7 +42,8 @@ function pianoScreen() {
     text("Press space to access drums", width/2 - 190, height/4 +50);
     text("C     D    E     F     G     A    B", width/2 - 335, height/2 + 25);
     fill("white");
-    text("1     2            3     4     5             6     7            8     9     0", width/2 - 305, height/2 - 20)  }
+    text("1     2            3     4     5             6     7            8     9     0", width/2 - 305, height/2 - 20);  
+  }
 }
 
 // white = 0, black = 1 
