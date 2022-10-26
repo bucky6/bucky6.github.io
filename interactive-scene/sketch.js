@@ -39,8 +39,7 @@ function pianoScreen() {
     drawPiano(width/2);
     textSize(25);
     text("Use the corresponding key to play a note", width/2 - 250, height/4);
-    text("Press space to access drums", width/2 - 190, height/4 +50);
-    text("C     D    E     F     G     A    B", width/2 - 335, height/2 + 25);
+    text("C     D    E     F     G     A    B     H     I      J      K    L     M     N", width/2 - 335, height/2 + 25);
     fill("white");
     text("1     2            3     4     5             6     7            8     9     0", width/2 - 305, height/2 - 20);  
   }
@@ -94,6 +93,9 @@ function preload() {
   f2Sharp = loadSound("F2Sharp.mp3");
   G2 = loadSound("G2.mp3");
   g2Sharp = loadSound("G2Sharp.mp3");
+  A2 = loadSound("A2.mp3");
+  a2Sharp = loadSound("A2Sharp.mp3");
+  B2 = loadSound("B2.mp3");
 }
 
 
@@ -134,5 +136,41 @@ function keyPressed() {
   }
   else if (keyCode === 52) {
     gSharp.play();
+  }
+  else if (keyCode === 72) {
+    C2.play();
+  }
+  else if (keyCode === 54) {
+    c2Sharp.play();
+  }
+  else if (keyCode === 73) {
+    D2.play();
+  }
+  else if (keyCode === 55) {
+    d2Sharp.play();
+  }
+  else if (keyCode === 74) {
+    E2.play();
+  }
+  else if (keyCode === 75) {
+    F2.play();
+  }
+  else if (keyCode === 56) {
+    f2Sharp.play();
+  }
+  else if (keyCode === 76) {
+    G2.play();
+  }
+  else if (keyCode === 57) {
+    g2Sharp.play();
+  }
+  else if (keyCode === 77) {
+    A2.play();
+  }
+  else if (keyCode === 48) {
+    a2Sharp.play();
+  }
+  else if (keyCode === 78) {
+    B2.play();
   }
 }
