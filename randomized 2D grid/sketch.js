@@ -12,7 +12,7 @@ function setup() {
   createCanvas(windowWidth, windowHeight);
   cellWidth = width/cols;
   cellHeight = height/rows;
-  grid = createRandom2DArray(cols, rows);
+  grid = create2DArray(cols, rows);
 }
 
 function draw() {
@@ -45,18 +45,18 @@ function create2DArray(cols, rows) {
   return emptyArray;
 }
 
-function createRandom2DArray(cols, rows) {
-  let emptyArray = [];
-  for (let y=0; y<rows; y++) {
-    emptyArray.push([]);
-    for (let x=0; x<cols; x++) {
-      if (random(100) < 50) {
-        emptyArray[y].push(0);
-      }
-      else {
-        emptyArray[y].push(1);
-      }
-    }
-  }
-  return emptyArray;
-}
+// function createRandom2DArray(cols, rows) {
+//   let emptyArray = [];
+//   for (let y=0; y<rows; y++) {
+//     emptyArray.push([]);
+//     for (let x=0; x<cols; x++) {
+//       if (random(100) < 50) {
+//         emptyArray[y].push(0);
+//       }
+//       else {
+//         emptyArray[y].push(1);
+//       }
+//     }
+//   }
+//   return emptyArray;
+// }
