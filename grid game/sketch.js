@@ -5,17 +5,25 @@
 // 
 
 let rows = 12;
-let cols = 7;
+let cols = 10;
 let grid;
 let cellWidth;
 let cellHeight;
 let state = "grey";
+let answer;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
   cellWidth = width/cols;
   cellHeight = height/rows;
   grid = create2DArray(cols, rows);
+  let colours = ["yellow", "green", "blue", "red", "purple", "black", "white"];
+  let a = random(colours);
+  let b = random(colours);
+  let c = random(colours);
+  let d = random(colours);
+  let e = random(colours);
+  answer = [a, b, c, d, e];
 }
 
 function draw() {
@@ -112,11 +120,37 @@ function mousePressed() {
   }
 }
 
+// set the enter key as the button to enter choices
+function keyPressed() {
+  if (keyCode === ENTER) {
+    addChoice();
+  }
+
+}
+
 // store player's choice in an array
 let choiceArray = [];
 function addChoice() {
   if (state === "yellow") {
     choiceArray.push("yellow");
+  }
+  else if (state === "green") {
+    choiceArray.push("green");
+  }
+  else if (state === "blue") {
+    choiceArray.push("blue");
+  }
+  else if (state === "red") {
+    choiceArray.push("red");
+  }
+  else if (state === "purple") {
+    choiceArray.push("purple");
+  }
+  else if (state === "black") {
+    choiceArray.push("black");
+  }
+  else if (state === "white") {
+    choiceArray.push("white");
   }
 }
 
