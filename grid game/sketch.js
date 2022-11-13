@@ -5,17 +5,25 @@
 // 
 
 let rows = 12;
-let cols = 7;
+let cols = 10;
 let grid;
 let cellWidth;
 let cellHeight;
 let state = "grey";
+let answer;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
   cellWidth = width/cols;
   cellHeight = height/rows;
   grid = create2DArray(cols, rows);
+  let colours = ["yellow", "green", "blue", "red", "purple", "black", "white"];
+  let a = random(colours);
+  let b = random(colours);
+  let c = random(colours);
+  let d = random(colours);
+  let e = random(colours);
+  answer = [a, b, c, d, e];
 }
 
 function draw() {
@@ -118,8 +126,34 @@ function addChoice() {
   if (state === "yellow") {
     choiceArray.push("yellow");
   }
+  else if (state === "green") {
+    choiceArray.push("green");
+  }
+  else if (state === "blue") {
+    choiceArray.push("blue");
+  }
+  else if (state === "red") {
+    choiceArray.push("red");
+  }
+  else if (state === "purple") {
+    choiceArray.push("purple");
+  }
+  else if (state === "black") {
+    choiceArray.push("black");
+  }
+  else if (state === "white") {
+    choiceArray.push("white");
+  }
 }
 
+
+// for (let i = 0; i < answer.length; i++) {
+//   for (let j = 0; j < choiceArray.length; i++) {
+//     if (i[answer] === j[choiceArray]) {
+//       text("win", width/2, height/2);
+//     }
+//   }
+// }
 // to do:
 // add button for player to enter choice
 // store colours that the player picked in an array
@@ -127,3 +161,4 @@ function addChoice() {
 // work out "right place right colour", "right colour wrong place" 
 // limit colour picking to the row corresponding to the turn
 // 
+
