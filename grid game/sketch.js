@@ -5,25 +5,17 @@
 // 
 
 let rows = 12;
-let cols = 10;
+let cols = 7;
 let grid;
 let cellWidth;
 let cellHeight;
 let state = "grey";
-let answer;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
   cellWidth = width/cols;
   cellHeight = height/rows;
   grid = create2DArray(cols, rows);
-  let colours = ["yellow", "green", "blue", "red", "purple", "black", "white"];
-  let a = random(colours);
-  let b = random(colours);
-  let c = random(colours);
-  let d = random(colours);
-  let e = random(colours);
-  answer = [a, b, c, d, e];
 }
 
 function draw() {
@@ -77,72 +69,79 @@ function create2DArray(cols, rows) {
   return emptyArray;
 }
 
-// set up the colour switching when mouse is pressed
+// set up the colour switching when mouse is pressed, providing the mouse is within a certain area
 function mousePressed() {
-  console.log(mouseX, mouseY);
-  let cellWidth = width/grid[0].length;
-  let cellHeight = height/grid.length;
+  if (mouseX < width/2 && mouseY < turn*cellHeight) {
+    console.log(mouseX, mouseY);
+    let cellWidth = width/grid[0].length;
+    let cellHeight = height/grid.length;
 
-  let x = Math.floor(mouseX/cellWidth);
-  let y = Math.floor(mouseY/cellHeight);
+    let x = Math.floor(mouseX/cellWidth);
+    let y = Math.floor(mouseY/cellHeight);
 
-  if (grid [y][x] === 0) {
-    grid[y][x] = 1;
-    state = "yellow";
-  }
-  else if (grid[y][x] === 1) {
-    grid[y][x] = 2;
-    state = "green";
-  }
-  else if (grid[y][x] === 2) {
-    grid[y][x] = 3;
-    state = "blue";
-  }
-  else if (grid[y][x] === 3) {
-    grid[y][x] = 4;
-    state = "red";
-  }
-  else if (grid[y][x] === 4) {
-    grid[y][x] = 5;
-    state = "purple";
-  }
-  else if (grid[y][x] === 5) {
-    grid[y][x] = 6;
-    state = "black";
-  }
-  else if (grid[y][x] === 6) {
-    grid[y][x] = 7;
-    state = "white";
-  }
-  else if (grid[y][x] === 7) {
-    grid[y][x] = 1;
-    state = "yellow";
+    if (grid [y][x] === 0) {
+      grid[y][x] = 1;
+      colourState = "yellow";
+      choiceArray.push("yellow");
+    }
+    else if (grid[y][x] === 1) {
+      grid[y][x] = 2;
+      colourState = "green";
+      choiceArray.push("green");
+    }
+    else if (grid[y][x] === 2) {
+      grid[y][x] = 3;
+      colourState = "blue";
+      choiceArray.push("blue");
+    }
+    else if (grid[y][x] === 3) {
+      grid[y][x] = 4;
+      colourState = "red";
+      choiceArray.push("red");
+    }
+    else if (grid[y][x] === 4) {
+      grid[y][x] = 5;
+      colourState = "purple";
+      choiceArray.push("purple");
+    }
+    else if (grid[y][x] === 5) {
+      grid[y][x] = 6;
+      colourState = "black";
+      choiceArray.push("black");
+    }
+    else if (grid[y][x] === 6) {
+      grid[y][x] = 7;
+      colourState = "white";
+      choiceArray.push("white");
+    }
+    else if (grid[y][x] === 7) {
+      grid[y][x] = 1;
+      colourState = "yellow";
+    }
   }
 }
+
+// set the enter key as the button to enter choices
+function keyPressed() {
+  if (keyCode === ENTER) {
+    turn++;
+    choiceArray = [];
+  }
+}
+
+// for (let i = 0; i < answer.length; i++) {
+//   for (let j = 0; j < choiceArray.length; j++) {
+//     if (i[answer] === j[choiceArray]) {
+      
+//     }
+//   }
+// }
 
 // store player's choice in an array
 let choiceArray = [];
 function addChoice() {
   if (state === "yellow") {
     choiceArray.push("yellow");
-  }
-  else if (state === "green") {
-    choiceArray.push("green");
-  }
-  else if (state === "blue") {
-    choiceArray.push("blue");
-  }
-  else if (state === "red") {
-    choiceArray.push("red");
-  }
-  else if (state === "purple") {
-    choiceArray.push("purple");
-  }
-  else if (state === "black") {
-    choiceArray.push("black");
-  }
-  else if (state === "white") {
-    choiceArray.push("white");
   }
 }
 
@@ -155,10 +154,10 @@ function addChoice() {
 //   }
 // }
 // to do:
-// add button for player to enter choice
-// store colours that the player picked in an array
-// create an ai to choose the colours 
+// add button for player to enter choice (done)
+// create an ai to choose the colours (done)
+// limit colour picking to the row corresponding to the turn (done)
+
 // work out "right place right colour", "right colour wrong place" 
 // limit colour picking to the row corresponding to the turn
 // 
-
