@@ -124,7 +124,6 @@ function mousePressed() {
 // set the enter key as the button to enter choices
 function keyPressed() {
   if (keyCode === ENTER) {
-    turn++;
     choiceArray = [];
   }
 }
