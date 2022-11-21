@@ -5,17 +5,27 @@
 // 
 
 let rows = 12;
-let cols = 7;
+let cols = 10;
 let grid;
 let cellWidth;
 let cellHeight;
-let state = "grey";
+let colourState = "grey";
+let turn = 1;
+let colours = ["yellow", "green", "blue", "red", "purple", "black", "white"];
+let answer;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
   cellWidth = width/cols;
   cellHeight = height/rows;
   grid = create2DArray(cols, rows);
+  // make computer choose a random sequence of colours
+  let a = random(colours);
+  let b = random(colours);
+  let c = random(colours);
+  let d = random(colours);
+  let e = random(colours);
+  answer = [a, b, c, d, e];
 }
 
 function draw() {
@@ -82,37 +92,30 @@ function mousePressed() {
     if (grid [y][x] === 0) {
       grid[y][x] = 1;
       colourState = "yellow";
-      choiceArray.push("yellow");
     }
     else if (grid[y][x] === 1) {
       grid[y][x] = 2;
       colourState = "green";
-      choiceArray.push("green");
     }
     else if (grid[y][x] === 2) {
       grid[y][x] = 3;
       colourState = "blue";
-      choiceArray.push("blue");
     }
     else if (grid[y][x] === 3) {
       grid[y][x] = 4;
       colourState = "red";
-      choiceArray.push("red");
     }
     else if (grid[y][x] === 4) {
       grid[y][x] = 5;
       colourState = "purple";
-      choiceArray.push("purple");
     }
     else if (grid[y][x] === 5) {
       grid[y][x] = 6;
       colourState = "black";
-      choiceArray.push("black");
     }
     else if (grid[y][x] === 6) {
       grid[y][x] = 7;
       colourState = "white";
-      choiceArray.push("white");
     }
     else if (grid[y][x] === 7) {
       grid[y][x] = 1;
@@ -122,9 +125,17 @@ function mousePressed() {
 }
 
 // set the enter key as the button to enter choices
+// add to the turn counter 
+// delete the last choiceArray
 function keyPressed() {
   if (keyCode === ENTER) {
     choiceArray = [];
+    addChoice();
+    turn++;
+    checkAnswer();
+    if (turn > 2) {
+      choiceArray.splice(0, 5);
+    }
   }
 }
 
@@ -138,20 +149,45 @@ function keyPressed() {
 
 // store player's choice in an array
 let choiceArray = [];
+
 function addChoice() {
-  if (state === "yellow") {
-    choiceArray.push("yellow");
+  for (let y=0; y<turn; y++) {
+    for (let x=0; x<cols/2; x++) {
+      if (grid[y][x] === 1) {
+        choiceArray.push("yellow");
+      }
+      else if (grid[y][x] === 2) {
+        choiceArray.push("green");
+      }
+      else if (grid[y][x] === 3) {
+        choiceArray.push("blue");
+      }
+      else if (grid[y][x] === 4) {
+        choiceArray.push("red");
+      }
+      else if (grid[y][x] === 5) {
+        choiceArray.push("purple");
+      }
+      else if (grid[y][x] === 6) {
+        choiceArray.push("black");
+      }
+      else if (grid[y][x] === 7) {
+        choiceArray.push("white");
+      }
+    }
   }
 }
 
-
-// for (let i = 0; i < answer.length; i++) {
-//   for (let j = 0; j < choiceArray.length; i++) {
-//     if (i[answer] === j[choiceArray]) {
-//       text("win", width/2, height/2);
-//     }
-//   }
-// }
+// check the current choiceArray against the answer
+function checkAnswer() {
+  for (let i = 0; i < answer.length; i++) {
+    for (let j = 0; j < choiceArray.length; i++) {
+      if (i[answer] === j[choiceArray]) {
+        console.log("win");
+      }
+    }
+  }
+}
 // to do:
 // add button for player to enter choice (done)
 // create an ai to choose the colours (done)
