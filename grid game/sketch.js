@@ -180,14 +180,17 @@ function addChoice() {
 
 // check the current choiceArray against the answer
 function checkAnswer() {
-  for (let i = 0; i < answer.length; i++) {
-    for (let j = 0; j < choiceArray.length; i++) {
-      if (i[answer] === j[choiceArray]) {
-        console.log("win");
+  for (let i = 0; i < choiceArray.length; i++) {
+    for (let j = 0; j < answer.length; i++) {
+      if (i[choiceArray] === j[answer]) {
+        fill("lightgreen");
+        
       }
     }
   }
 }
+
+
 // to do:
 // add button for player to enter choice (done)
 // create an ai to choose the colours (done)
