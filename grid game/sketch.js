@@ -65,6 +65,8 @@ function displayGrid(grid) {
       rect(x*cellWidth, y*cellHeight, cellWidth, cellHeight);
     }
   }
+  // fill("black");
+  // rect(width/2 - 350, height/2 - 275, 700, 550);
 }
 
 // make the grid
@@ -180,11 +182,15 @@ function addChoice() {
 
 // check the current choiceArray against the answer
 function checkAnswer() {
+  // cellWidth = width/cols;
+  // cellHeight = height/rows;
   for (let i = 0; i < choiceArray.length; i++) {
-    for (let j = 0; j < answer.length; i++) {
+    for (let j = 0; j < answer.length; j++) {
       if (i[choiceArray] === j[answer]) {
+        let x = width/2 + cellWidth * answer[j]; 
+        rect(x, cellHeight*turn, width/cols, height/rows);
+        // console.log(x, cellheight*turn, cellWidth, cellHeight)
         fill("lightgreen");
-        
       }
     }
   }
