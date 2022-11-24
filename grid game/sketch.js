@@ -4,8 +4,8 @@
 //
 // 
 
-let rows = 12;
-let cols = 10;
+let rows = 24;
+let cols = 5;
 let grid;
 let cellWidth;
 let cellHeight;
@@ -83,7 +83,7 @@ function create2DArray(cols, rows) {
 
 // set up the colour switching when mouse is pressed, providing the mouse is within a certain area
 function mousePressed() {
-  if (mouseX < width/2 && mouseY < turn*cellHeight) {
+  if (mouseY < turn*cellHeight) {
     console.log(mouseX, mouseY);
     let cellWidth = width/grid[0].length;
     let cellHeight = height/grid.length;
@@ -182,14 +182,13 @@ function addChoice() {
 
 // check the current choiceArray against the answer
 function checkAnswer() {
-  // cellWidth = width/cols;
-  // cellHeight = height/rows;
   for (let i = 0; i < choiceArray.length; i++) {
     for (let j = 0; j < answer.length; j++) {
       if (i[choiceArray] === j[answer]) {
-        let x = width/2 + cellWidth * answer[j]; 
-        rect(x, cellHeight*turn, width/cols, height/rows);
-        // console.log(x, cellheight*turn, cellWidth, cellHeight)
+          x = width/cols * answer[j]; 
+          if (isNaN(x)) x = (width/cols)*answer[j];
+          rect(x, (height/rows)*(turn + 1), width/cols, height/rows);
+          console.log(x, (height/rows)*turn, width/cols, height/rows)
         fill("lightgreen");
       }
     }
@@ -203,5 +202,4 @@ function checkAnswer() {
 // limit colour picking to the row corresponding to the turn (done)
 
 // work out "right place right colour", "right colour wrong place" 
-// limit colour picking to the row corresponding to the turn
 // 
